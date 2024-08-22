@@ -184,6 +184,9 @@ spec:
             - --leader-elect-resource-namespace={{ .Release.Namespace }}
             {{- end }}
             - -v={{.Values.custom.scheduler_log_level}}
+            {{- if .Values.custom.plugins_enable }}
+            - --plugins-dir={{ .Values.custom.plugins_dir }}
+            {{- end }}
             - 2>&1
           env:
             - name: DEBUG_SOCKET_DIR
