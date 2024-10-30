@@ -263,7 +263,7 @@ func jobStatus(ssn *Session, jobInfo *api.JobInfo) scheduling.PodGroupStatus {
 	} else {
 		allocated := 0
 		for status, tasks := range jobInfo.TaskStatusIndex {
-			if api.AllocatedStatus(status) || status == api.Succeeded {
+			if api.AllocatedStatus(status) || status == api.Succeeded || status == api.Failed {
 				allocated += len(tasks)
 			}
 		}

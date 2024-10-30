@@ -1,0 +1,1 @@
+docker build -t reg.supremind.info/hub/atom/volcano_scheduler:atomplugin   -f example/atom-plugin/Dockerfile .

@@ -19,7 +19,7 @@ IMAGE_PREFIX=volcanosh
 CRD_OPTIONS ?= "crd:crdVersions=v1,generateEmbeddedObjectMeta=true"
 CRD_OPTIONS_EXCLUDE_DESCRIPTION=${CRD_OPTIONS}",maxDescLen=0"
 CC ?= "gcc"
-SUPPORT_PLUGINS ?= "no"
+SUPPORT_PLUGINS ?= "yes"
 CRD_VERSION ?= v1
 BUILDX_OUTPUT_TYPE ?= "docker"
 
@@ -72,6 +72,7 @@ init:
 	mkdir -p ${RELEASE_DIR}
 
 vc-scheduler: init
+	echo ${CC}
 	if [ ${SUPPORT_PLUGINS} = "yes" ];then\
 		CC=${CC} CGO_ENABLED=1 go build -ldflags ${LD_FLAGS} -o ${BIN_DIR}/vc-scheduler ./cmd/scheduler;\
 	else\
